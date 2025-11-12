@@ -1,6 +1,7 @@
 import { defineConfig } from "eslint/config";
 import js from "@eslint/js";
 import prettierConfig from "eslint-config-prettier"; // Import the prettier configuration
+import globals from 'globals'; //Import de jest configuration
 
 export default defineConfig([
   {
@@ -13,6 +14,16 @@ export default defineConfig([
     rules: {
       "no-unused-vars": "warn",
       "no-undef": "warn",
+    },
+    files: ['**/*.js'],
+    languageOptions: {
+      globals: {
+        ...globals.jest,
+      },
+    },
+    rules: {
+      'no-unused-vars': 'warn',
+      'no-undef': 'warn',
     },
   },
 ]);
